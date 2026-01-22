@@ -1,0 +1,51 @@
+@import "tailwindcss";
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+
+:root {
+  --primary-color: #ff00fb;
+}
+
+.text-primary {
+  color: var(--primary-color);
+}
+
+.bg-primary {
+  background-color: var(--primary-color);
+}
+.border-primary {
+  border-color: var(--primary-color);
+  box-sizing: border-box;
+}
+
+.border-hover:hover {
+  border: 1px solid var(--primary-color);
+  background-color: black;
+  color: var(--primary-color);
+}
+
+/* Base styles for the checkbox */
+.checkbox-input {
+  appearance: none; /* Remove default checkbox styling */
+  
+  background-color: black; /* Background color when unchecked */
+  border: 1px solid var(--primary-color); /* Border color */
+  border-radius: 2px; /* Optional: rounded corners */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Styles for checked state */
+.checkbox-input:checked {
+  background-color: var(--primary-color); /* Background color when checked */
+}
+
+/* Adding a custom tick using a pseudo-element */
+.checkbox-input:checked::after {
+  content: ''; /* Create an empty content for the tick */
+  position: absolute; /* Position relative to the checkbox */
+  top: 4px; /* Positioning the tick inside the checkbox */
+  left: 4px; /* Positioning the tick inside the checkbox */
+  width: 8px; /* Width of the tick */
+  height: 8px; /* Height of the tick */
+  background-color: white; /* Color of the tick */
+  clip-path: polygon(0 100%, 50% 50%, 100% 0); /* Create a tick shape */
+}
