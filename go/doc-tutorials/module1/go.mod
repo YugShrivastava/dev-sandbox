@@ -1,4 +1,4 @@
-module github.com/YugShrivastava/dev-sandbox/main/tree/go/doc-tutorials/module1
+module github.com/YugShrivastava/dev-sandbox/tree/main/go/doc-tutorials/module1
 
 go 1.25.2
 

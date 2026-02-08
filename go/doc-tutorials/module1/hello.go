@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/YugShrivastava/dev-sandbox/main/tree/go/doc-tutorials/module1/greetings"
+	"github.com/YugShrivastava/dev-sandbox/tree/main/go/doc-tutorials/module1/greetings"
 	"rsc.io/quote/v4"
 )
 
