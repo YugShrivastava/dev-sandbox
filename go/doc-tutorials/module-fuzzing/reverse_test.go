@@ -14,7 +14,10 @@ func TestReverse(t *testing.T) {
         {"!12345", "54321!"},
     }
     for _, tc := range testcases {
-        rev := Reverse(tc.in)
+        rev, revErr := Reverse(tc.in)
+        if revErr != nil {
+        t.Errorf("Error on valid string: %v, %v", tc.want, revErr)
+        }
         if rev != tc.want {
                 t.Errorf("Reverse: %q, want %q", rev, tc.want)
         }
@@ -22,13 +25,19 @@ func TestReverse(t *testing.T) {
 }
 
 func FuzzReverse(f *testing.F) {
-    testcases := []string{"Hello, world", " ", "!12345"}
+    testcases := []string {"Hello, world", " ", "!12345"}
     for _, tc := range testcases {
         f.Add(tc)  // Use f.Add to provide a seed corpus
     }
     f.Fuzz(func(t *testing.T, orig string) {
-        rev := Reverse(orig)
-        doubleRev := Reverse(rev)
+        rev, err1 := Reverse(orig)
+        if err1 != nil {
+            return
+        }
+        doubleRev, err2 := Reverse(rev)
+        if err2 != nil {
+             return
+        }
         if orig != doubleRev {
             t.Errorf("Before: %q, after: %q", orig, doubleRev)
         }
