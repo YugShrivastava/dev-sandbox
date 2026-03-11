@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package task;
+
+option go_package = "/pb";
+
+// The request to create a task
+message CreateTaskRequest {
+  string title = 1;
+  string description = 2;
+}
+
+// The response after creating a task
+message CreateTaskResponse {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+// Request to list tasks — empty, we want all of them
+message ListTasksRequest {}
+
+// A single task in the stream
+message Task {
+  string id = 1;
+  string title = 2;
+  string description = 3;
+}
+
+// The service definition
+service TaskManager {
+  // Unary: create a single task
+  rpc CreateTask(CreateTaskRequest) returns (CreateTaskResponse);
+
+  // Server streaming: list all tasks as a stream
+  rpc ListTasks(ListTasksRequest) returns (stream Task);
+}
